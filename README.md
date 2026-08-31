@@ -1,6 +1,6 @@
 # ContosoIndustriesJapan
 
-CTC FY26 インターンシップ SIer 体験研修「ContosoIndustriesJapan」というお題（架空の製造業クライアント想定シナリオ）の、演習手順およびサンプルデータの置き場です。
+SIer 体験研修「ContosoIndustriesJapan」というお題（架空の製造業クライアント想定シナリオ）の、演習手順およびサンプルデータの置き場です。
 
 ## フォルダー構成
 
