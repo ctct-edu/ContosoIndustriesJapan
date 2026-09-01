@@ -10,7 +10,7 @@ CTC FY26「SIer 体験研修」で使用する、生成 AI チャットサイト
 | `index.html` | 画面の骨組み | 発展課題で編集 |
 | `style.css` | 見た目（色・レイアウト） | 発展課題で編集 |
 | `app.js` | チャットの動作、AI との通信 | 発展課題で編集 |
-| `config.js` | 接続先・API キーなどの設定 | **必ず編集** |
+| `config.js` | 接続先・API キーなどの設定 | **`ENDPOINT`・`API_KEY` は必ず編集**（`DEPLOYMENT`・`IS_GPT5` は編集不要） |
 
 ## 使い方
 
@@ -30,7 +30,7 @@ sudo cp -r ContosoIndustriesJapan/sampleChatbotSite/* /var/www/html/
 
 ### 3. 設定ファイルを書き換える
 
-`/var/www/html/config.js` を開き、`<< >>` で囲まれた 3 か所を、Azure AI Foundry で取得した値に置き換えます。
+`/var/www/html/config.js` を開き、`<< >>` で囲まれた 2 か所を、Azure AI Foundry で取得した値に置き換えます。
 
 ```bash
 sudo nano /var/www/html/config.js
@@ -39,8 +39,11 @@ sudo nano /var/www/html/config.js
 | 項目 | 書き込む値 |
 | --- | --- |
 | `ENDPOINT` | AI Foundry のエンドポイント URL（末尾の `/` は付けない） |
-| `DEPLOYMENT` | モデルのデプロイ名 |
 | `API_KEY` | API キー |
+
+> 注：`DEPLOYMENT` と `IS_GPT5` は、本研修で使用するモデル（`gpt-5.4-nano`）にあわせて既定値が入っています。書き換える必要はありません。
+
+> 注：**API キーは、Foundry ポータルのホーム画面に表示される「API キー」ではなく、Azure Portal 側の「キーとエンドポイント」画面にある「キー1」を使用してください。** Foundry ポータルのホーム画面の値はプロジェクト用の別のキーであり、これを使うと「API キーが正しくありません」（401）というエラーになります。
 
 > 注：API キーはブラウザから読み取れる状態になります。この構成は研修用の簡易的なものであり、実務では API キーをサーバー側で保持します。
 
@@ -54,8 +57,8 @@ sudo nano /var/www/html/config.js
 
 | 症状 | 確認すること |
 | --- | --- |
-| 「config.js の設定が済んでいません」と表示される | `<< >>` の 3 か所を書き換えたか、ファイルを保存したか |
-| 「API キーが正しくありません」（401） | `API_KEY` の値、コピー時に余分な空白が入っていないか |
+| 「config.js の設定が済んでいません」と表示される | `<< >>` の 2 か所を書き換えたか、ファイルを保存したか |
+| 「API キーが正しくありません」（401） | `API_KEY` に Foundry ポータルのホーム画面の値を使っていないか（**Azure Portal の「キーとエンドポイント」画面の「キー1」を使う**）。コピー時に余分な空白が入っていないか |
 | 「接続先が見つかりません」（404） | `ENDPOINT` の末尾に `/` が付いていないか、`DEPLOYMENT` の綴り |
 | 「接続できませんでした」 | `ENDPOINT` の URL 全体、ブラウザの開発者ツール（F12）のコンソール |
 | 画面が真っ白 | ファイルの配置先、`config.js` の記述（カンマの消し忘れなど） |

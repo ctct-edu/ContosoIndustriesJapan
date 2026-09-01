@@ -11,8 +11,9 @@ const CONFIG = {
   // 例: https://aif-intern-260401-01.openai.azure.com
   ENDPOINT: "<<エンドポイントを貼り付け>>",
 
-  // モデルのデプロイ名（AI Foundry で自分が付けた名前）
-  DEPLOYMENT: "<<デプロイ名を貼り付け>>",
+  // モデルのデプロイ名
+  // 本研修では全員 "gpt-5.4-nano" で統一するため、書き換え不要です。
+  DEPLOYMENT: "gpt-5.4-nano",
 
   // API キー
   API_KEY: "<<APIキーを貼り付け>>",
@@ -44,5 +45,6 @@ const CONFIG = {
 
   // gpt-5 系のモデルを使う場合は true にする
   // （パラメーター名が異なり、TEMPERATURE も指定できないため）
-  IS_GPT5: false,
+  // 本研修では gpt-5.4-nano で統一するため、書き換え不要です。
+  IS_GPT5: true,
 };

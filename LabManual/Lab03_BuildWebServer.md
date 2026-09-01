@@ -169,4 +169,4 @@ title: Web サーバーの構築
 
 これでLab03（タスク1〜3：nginx導入、テストページ表示確認、サンプルチャットサイトの配置）は完成です。
 
-> 注：サンプルチャットサイトの構成ファイル（`index.html`／`style.css`／`config.js`／`app.js`）は、このリポジトリの `sampleChatbotSite` フォルダーで管理しています。`config.js` の3か所（`ENDPOINT`・`DEPLOYMENT`・`API_KEY`）を書き換えることで動作します。書き換え方法（`nano` か、置換コマンドを使うか）は Lab04 側で確定させます。また、ブラウザから AI Foundry へ直接アクセスする構成が CORS の制約を受けないかどうかは、Lab04 執筆前に実機確認が必要な未解決事項です。
+> 注：サンプルチャットサイトの構成ファイル（`index.html`／`style.css`／`config.js`／`app.js`）は、このリポジトリの `sampleChatbotSite` フォルダーで管理しています。`config.js` の2か所（`ENDPOINT`・`API_KEY`）を書き換えることで動作します。書き換え方法（置換コマンドを使用）と、ブラウザから AI Foundry への直接アクセスに問題がないこと（CORSの制約を受けないこと）は、Lab04 で実機確認済みです。

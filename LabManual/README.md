@@ -10,7 +10,7 @@ Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チ�
 | [Lab01](./Lab01_ResourceGroupAndNetwork.md) | リソース グループ・ネットワークの作成 | リソースグループ、VNet、NSG の作成と受信規則の追加 | 60分 |
 | [Lab02](./Lab02_CreateVirtualMachine.md) | 仮想マシンの作成と接続 | VM の作成、PowerShell での SSH 接続 | 60分 |
 | [Lab03](./Lab03_BuildWebServer.md) | Web サーバーの構築 | nginx の導入、サンプルチャットサイトの配置 | 40分 |
-| Lab04 | AI Foundry の作成と接続 | 準備中（CORS実機確認・config.js編集方法が未確定） | - |
+| [Lab04](./Lab04_DeployAIFoundry.md) | AI Foundry の作成と接続 | AI Foundry リソースの作成、モデルのデプロイ、config.js への接続情報の書き込み | 40分 |
 
 ## 前提条件
 
@@ -28,4 +28,4 @@ Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チ�
 ## サンプルチャットサイトについて
 
 Lab03 で配置するチャットサイトは、[`../sampleChatbotSite`](../sampleChatbotSite) に置いています。
-`config.js` の3か所（`ENDPOINT`・`DEPLOYMENT`・`API_KEY`）を、Lab04 で作成する AI Foundry の情報に書き換えることで動作します。
+`config.js` の2か所（`ENDPOINT`・`API_KEY`）を、Lab04 で作成する AI Foundry の情報に書き換えることで動作します（`DEPLOYMENT` は全員共通の `gpt-5.4-nano` で固定してあるため、書き換え不要です）。
