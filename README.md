@@ -27,7 +27,7 @@ Day1（要件定義）・Day2（設計）・Day5（報告）の資料は、別�
 | リソース グループ・VNet・NSG | Lab01 | 環境の土台となるネットワーク |
 | 仮想マシン（Ubuntu） | Lab02 | Web サーバーを動かすホスト |
 | nginx・サンプルサイト | Lab03 | チャットサイトの公開 |
-| Azure AI Foundry | Lab04 | チャットサイトが応答する AI モデル |
+| Azure AI Foundry | Lab04（準備中） | チャットサイトが応答する AI モデル |
 
 ## フォルダー構成
 
@@ -41,7 +41,7 @@ Day1（要件定義）・Day2（設計）・Day5（報告）の資料は、別�
 1. `LabManual` の Lab01 から順に進めます。詳細は [`LabManual/README.md`](./LabManual/README.md) を参照してください。
 2. Lab01・Lab02 で、自分専用の Azure ネットワークと仮想マシンを構築します。
 3. Lab03 で、`sampleChatbotSite` の中身を自分の VM 上の nginx に配置します。この時点ではチャットは動作しません（接続先が未設定のため）。
-4. Lab04 で Azure AI Foundry を構築し、`sampleChatbotSite/config.js` に接続情報を設定して、チャットを動かします。
+4. Lab04（準備中）で Azure AI Foundry を構築し、`sampleChatbotSite/config.js` に接続情報を設定して、チャットを動かします。
 5. 発展課題として、`sampleChatbotSite` の見た目や AI の応答スタイルを自分たちで作り替えます。
 
 ## 前提条件
@@ -52,4 +52,6 @@ Day1（要件定義）・Day2（設計）・Day5（報告）の資料は、別�
 
 ## 進捗・未確定事項
 
-Lab01〜Lab04 は実機確認済みです。現時点で残っている確認事項はありません。
+- Lab04（AI Foundry の作成と接続）は執筆中です
+- ブラウザから AI Foundry への直接アクセスが CORS の制約を受けないかどうか、実機確認が必要です
+- `config.js` の書き換え方法（`nano` での手編集か、置換コマンドを使うか）は Lab04 側で確定させます
