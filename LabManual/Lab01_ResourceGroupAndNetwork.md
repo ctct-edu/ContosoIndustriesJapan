@@ -24,6 +24,8 @@ title: リソース グループ・ネットワークの作成
     | リージョン | (Asia Pacific) Japan East |
 
     > 注：`YYMMDD` は実施日、`NN` は自分の番号に置き換えてください。
+    > 例：2026 年 10 月 27 日に実施し、番号が 03 の場合は `rg-intern-261027-03` となります。
+    > 以降の手順でも同じ規則で置き換えます。
 
 5. [レビューと作成] をクリックします。
 
@@ -194,7 +196,7 @@ title: リソース グループ・ネットワークの作成
 
 ## タスク 4 - 受信セキュリティ規則を追加する（HTTP・SSH）
 
-1. NSG「nsg-intern-YYMMDD-NN」の「概要」画面で、左側メニューの [受信セキュリティ規則] をクリックします。
+1. NSG「nsg-intern-YYMMDD-NN」の「概要」画面で、左側メニューの [設定] を展開し、[受信セキュリティ規則] をクリックします。
 
 2. 既定の3規則（AllowVnetInBound、AllowAzureLoadBalancerInBound、DenyAllInBound）のみが表示されていることを確認します。
 

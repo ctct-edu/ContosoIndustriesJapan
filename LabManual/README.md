@@ -1,23 +1,34 @@
 # SIer 体験研修 ハンズオン手順書
 
-SIer 体験研修」で使用するハンズオン手順書です。
+「SIer 体験研修」で使用するハンズオン手順書です。
 Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チャットサイトを公開するまでを扱います。
 
 ## 手順書一覧
 
-| Lab | タイトル | 内容 | 推定時間 |
-|---|---|---|---|
-| [Lab01](./Lab01_ResourceGroupAndNetwork.md) | リソース グループ・ネットワークの作成 | リソースグループ、VNet、NSG の作成と受信規則の追加 | 60分 |
-| [Lab02](./Lab02_CreateVirtualMachine.md) | 仮想マシンの作成と接続 | VM の作成、PowerShell での SSH 接続 | 60分 |
-| [Lab03](./Lab03_BuildWebServer.md) | Web サーバーの構築 | nginx の導入、サンプルチャットサイトの配置 | 40分 |
-| [Lab04](./Lab04_DeployAIFoundry.md) | AI Foundry の作成と接続 | AI Foundry リソースの作成、モデルのデプロイ、config.js への接続情報の書き込み | 40分 |
+| Lab | タイトル | 内容 | 推定時間 | 実施日 |
+|---|---|---|---|---|
+| [Lab00](./Lab00_SignIn.md) | Azure へのサインイン | サインイン、多要素認証の登録 | 15分 | Day3 |
+| [Lab01](./Lab01_ResourceGroupAndNetwork.md) | リソース グループ・ネットワークの作成 | リソースグループ、VNet、NSG の作成と受信規則の追加 | 60分 | Day3 |
+| [Lab02](./Lab02_CreateVirtualMachine.md) | 仮想マシンの作成と接続 | VM の作成、PowerShell での SSH 接続 | 60分 | Day3 |
+| [Lab03](./Lab03_BuildWebServer.md) | Web サーバーの構築 | nginx の導入、サンプルチャットサイトの配置 | 40分 | Day4 |
+| [Lab04](./Lab04_DeployAIFoundry.md) | AI Foundry の作成と接続 | AI Foundry リソースの作成、モデルのデプロイ、config.js への接続情報の書き込み | 60分 | Day4 |
+| [Lab05](./Lab05_TuneSystemPrompt.md) | システムプロンプトの調整 | 応答の範囲・長さ・断り方の調整と検証 | 60分 | Day4 |
+
+Lab00 から Lab04 までは、記載された手順のとおりに進めます。
+Lab05 は、動かして直すことを繰り返す進め方です。決まった正解はありません。
 
 ## 前提条件
 
-- Azure Portal にサインイン可能なアカウント
+- Azure Portal にサインイン可能なアカウント（講師から配付）
+- 多要素認証に使用するスマートフォン
 - ローカル PC（Windows、PowerShell 使用）
-- リソース名は `rg-intern-YYMMDD-NN` 形式（`YYMMDD` は実施日、`NN` はチーム番号）に置き換えて進めてください
+- リソース名は `rg-intern-YYMMDD-NN` 形式に置き換えて進めてください
+  - `YYMMDD` は実施日。2026 年 10 月 27 日であれば `261027`
+  - `NN` は自分の番号。3 番であれば `03`
+  - 例：`rg-intern-261027-03`
 - VM のユーザー名は `azureuser`、パスワードは講師の指示に従ってください
+
+> Day3 および Day4 の構築は、1 人ずつ自分の環境を作ります。番号はチームではなく個人の番号です。
 
 ## 表記ルール
 
@@ -28,4 +39,23 @@ Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チ�
 ## サンプルチャットサイトについて
 
 Lab03 で配置するチャットサイトは、[`../sampleChatbotSite`](../sampleChatbotSite) に置いています。
-`config.js` の2か所（`ENDPOINT`・`API_KEY`）を、Lab04 で作成する AI Foundry の情報に書き換えることで動作します（`DEPLOYMENT` は全員共通の `gpt-5.4-nano` で固定してあるため、書き換え不要です）。
+`config.js` の 2 か所（`ENDPOINT`・`API_KEY`）を、Lab04 で作成する AI Foundry の情報に書き換えることで動作します
+（`DEPLOYMENT` は全員共通の `gpt-5.4-nano` で固定してあるため、書き換え不要です）。
+
+Lab05 では、同じ `config.js` の `SYSTEM_PROMPT` を書き換えます。
+
+## つまずいたときは
+
+- まず、手順書の末尾にある「うまくいかないとき」の表を確認してください
+- 次に、チーム内で聞いてください
+- 10 分考えて分からなければ、講師に声をかけてください
+
+あてずっぽうに設定を変えないでください。
+どこまで確かめたかが分からなくなり、かえって時間がかかります。
+
+## 記録について
+
+作成したリソースの名前と設定値は、その場でワークブックに書き留めてください。
+後でまとめて書こうとすると、必ず抜けます。Lab04 と Lab05 で使う値も含まれます。
+
+なお、API キーはワークブックに書かないでください。画面を共有するときにも映さないよう注意してください。
