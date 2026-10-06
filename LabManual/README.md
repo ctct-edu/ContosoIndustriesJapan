@@ -12,10 +12,8 @@ Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チ�
 | [Lab02](./Lab02_CreateVirtualMachine.md) | 仮想マシンの作成と接続 | VM の作成、PowerShell での SSH 接続 | 60分 | Day3 |
 | [Lab03](./Lab03_BuildWebServer.md) | Web サーバーの構築 | nginx の導入、サンプルチャットサイトの配置 | 40分 | Day4 |
 | [Lab04](./Lab04_DeployAIFoundry.md) | AI Foundry の作成と接続 | AI Foundry リソースの作成、モデルのデプロイ、config.js への接続情報の書き込み | 60分 | Day4 |
-| [Lab05](./Lab05_TuneSystemPrompt.md) | システムプロンプトの調整 | 応答の範囲・長さ・断り方の調整と検証 | 60分 | Day4 |
 
 Lab00 から Lab04 までは、記載された手順のとおりに進めます。
-Lab05 は、動かして直すことを繰り返す進め方です。決まった正解はありません。
 
 ## 前提条件
 
@@ -42,7 +40,6 @@ Lab03 で配置するチャットサイトは、[`../sampleChatbotSite`](../samp
 `config.js` の 2 か所（`ENDPOINT`・`API_KEY`）を、Lab04 で作成する AI Foundry の情報に書き換えることで動作します
 （`DEPLOYMENT` は全員共通の `gpt-5.4-nano` で固定してあるため、書き換え不要です）。
 
-Lab05 では、同じ `config.js` の `SYSTEM_PROMPT` を書き換えます。
 
 ## つまずいたときは
 
@@ -56,6 +53,6 @@ Lab05 では、同じ `config.js` の `SYSTEM_PROMPT` を書き換えます。
 ## 記録について
 
 作成したリソースの名前と設定値は、その場でワークブックに書き留めてください。
-後でまとめて書こうとすると、必ず抜けます。Lab04 と Lab05 で使う値も含まれます。
+後でまとめて書こうとすると、必ず抜けます。Lab04 で使う値も含まれます。
 
 なお、API キーはワークブックに書かないでください。画面を共有するときにも映さないよう注意してください。

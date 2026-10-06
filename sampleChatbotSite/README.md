@@ -10,7 +10,7 @@ CTC FY26「SIer 体験研修」で使用する、生成 AI チャットサイト
 | `index.html` | 画面の骨組み | 発展課題で編集 |
 | `style.css` | 見た目（色・レイアウト） | 発展課題で編集 |
 | `app.js` | チャットの動作、AI との通信 | 発展課題で編集 |
-| `config.js` | 接続先・API キーなどの設定 | **`ENDPOINT`・`API_KEY` は必ず編集**（`DEPLOYMENT`・`IS_GPT5` は編集不要） |
+| `config.js` | 接続先・API キー・システムプロンプトなどの設定 | **`ENDPOINT`・`API_KEY` は必ず編集**（`DEPLOYMENT`・`IS_GPT5` は編集不要） |
 
 ## 使い方
 
