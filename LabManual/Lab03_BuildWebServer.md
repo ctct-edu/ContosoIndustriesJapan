@@ -13,7 +13,7 @@ title: Web サーバーの構築
     sudo apt update
     ```
 
-    ![apt update の実行](./media/lab03-01.png)
+    <img src="./media/lab03-01.png" alt="apt update の実行" width="800">
 
 2. 実行結果として、パッケージの取得ログが流れ、最後に以下のようなメッセージが表示されることを確認します。
 
@@ -24,7 +24,7 @@ title: Web サーバーの構築
     44 packages can be upgraded. Run 'apt list --upgradable' to see them.
     ```
 
-    ![apt update実行結果](./media/lab03-02.png)
+    <img src="./media/lab03-02.png" alt="apt update実行結果" width="800">
 
 3. 続けて、以下のコマンドを実行し、nginx をインストールします。
 
@@ -32,11 +32,11 @@ title: Web サーバーの構築
     sudo apt install nginx -y
     ```
 
-    ![nginx のインストール中](./media/lab03-03.png)
+    <img src="./media/lab03-03.png" alt="nginx のインストール中" width="800">
 
 4. インストールログが流れ、`azureuser@vm-intern-YYMMDD-NN:~$` のプロンプトに戻れば完了です。
 
-    ![nginxインストール完了](./media/lab03-04.png)
+    <img src="./media/lab03-04.png" alt="nginxインストール完了" width="800">
 
     > 注：`-y` を付けることで、途中の確認メッセージ（Y/n）を省略できます。
 
@@ -48,7 +48,7 @@ title: Web サーバーの構築
 
 6. `Active: active (running)` と緑色で表示されていれば、正常に起動しています。
 
-    ![nginx起動確認](./media/lab03-05.png)
+    <img src="./media/lab03-05.png" alt="nginx起動確認" width="800">
 
     > 注：確認が終わったら `q` キーを押すと、コマンドの入力画面に戻ります。
 
@@ -56,11 +56,11 @@ title: Web サーバーの構築
 
 8. 「Welcome to nginx!」という画面が表示されれば、Web サーバーが正常に動作しています。
 
-    ![nginx初期ページ](./media/lab03-06.png)
+    <img src="./media/lab03-06.png" alt="nginx初期ページ" width="420">
 
     > 注：アドレス バー左のアイコンをクリックすると、「このサイトへの接続は保護されていません」と表示されます。これは HTTPS（暗号化通信）を設定していないためです。本研修では問題ありません。
     >
-    > ![保護されていない通信の表示](./media/lab03-07.png)
+    > <img src="./media/lab03-07.png" alt="保護されていない通信の表示" width="340">
 
 ## タスク 2 - サイトファイルを差し替える
 
@@ -78,7 +78,7 @@ title: Web サーバーの構築
 
 3. 既定のページ `index.nginx-debian.html` が置かれていることを確認します。
 
-    ![フォルダの中身確認](./media/lab03-08.png)
+    <img src="./media/lab03-08.png" alt="フォルダの中身確認" width="800">
 
     | ファイル名 | サイズ |
     |---|---|
@@ -90,7 +90,7 @@ title: Web サーバーの構築
     sudo mv index.nginx-debian.html index.nginx-debian.html.bak
     ```
 
-    ![既定ページの退避](./media/lab03-09.png)
+    <img src="./media/lab03-09.png" alt="既定ページの退避" width="800">
 
     > 注：ファイル名を変更するコマンドです。削除ではなく、`.bak`という拡張子を付けて名前を変えているだけなので、元に戻したい場合はいつでも復元できます。
 
@@ -102,7 +102,7 @@ title: Web サーバーの構築
 
 6. ターミナル上のテキストエディタ「nano」が開きます。
 
-    ![nano起動画面](./media/lab03-10.png)
+    <img src="./media/lab03-10.png" alt="nano起動画面" width="800">
 
 7. 以下の HTML をコピーし、PowerShell の画面で右クリックして貼り付けます（動作確認用のサンプルサイトです。実際の研修では、Day4 で学生自身が生成AIで作成したサイトに差し替えます）。
 
@@ -122,13 +122,13 @@ title: Web サーバーの構築
 
     > 注：コピーは、コード枠の右上にあるコピー アイコンをクリックするか、範囲を選択して `Ctrl + C` で行います。貼り付けは、PowerShell の画面で右クリックするか、`Ctrl + V` を押します。
 
-    ![HTML の貼り付け](./media/lab03-11.png)
+    <img src="./media/lab03-11.png" alt="HTML の貼り付け" width="800">
 
 8. HTMLの内容を貼り付けたら、`Ctrl + O` を押して保存し、続けて `Enter` を押してファイル名を確定します。
 
     > 注：`O` は数字のゼロではなく、英字のオーです。
 
-    ![ファイル名の確定](./media/lab03-12.png)
+    <img src="./media/lab03-12.png" alt="ファイル名の確定" width="800">
 
 9. `Ctrl + X` を押して、nano を終了します。
 
@@ -138,13 +138,13 @@ title: Web サーバーの構築
     sudo chmod 644 index.html
     ```
 
-    ![権限設定](./media/lab03-13.png)
+    <img src="./media/lab03-13.png" alt="権限設定" width="800">
 
     > 注：nginx がこのファイルを正しく読み込めるようにするための設定です。
 
 11. Web ブラウザで `http://<VMのパブリックIPアドレス>/` に再度アクセスし、「Contoso Industries Japan」のページが表示されることを確認します。
 
-    ![サンプルサイト表示確認](./media/lab03-14.png)
+    <img src="./media/lab03-14.png" alt="サンプルサイト表示確認" width="420">
 
 これでタスク1・2（nginx導入、テスト用サイトの表示確認）は完成です。
 
@@ -161,7 +161,7 @@ title: Web サーバーの構築
 
     > 注：`git` が入っていない場合は、`sudo apt install git -y` を先に実行してください（Ubuntu 24.04 には標準で入っていることがほとんどです）。このリポジトリには演習手順とサンプルサイトの両方が入っていますが、VM に配置するのは `sampleChatbotSite` フォルダーの中身だけです。
 
-    ![git clone の結果](./media/lab03-15.png)
+    <img src="./media/lab03-15.png" alt="git clone の結果" width="800">
 
 2. `sampleChatbotSite` フォルダーの中身を、nginx の公開フォルダにコピーします。
 
@@ -171,13 +171,13 @@ title: Web サーバーの構築
 
     > 注：タスク2で作成したテスト用の `index.html` は、このコピーで上書きされます。
 
-    ![サンプルサイトのコピー](./media/lab03-16.png)
+    <img src="./media/lab03-16.png" alt="サンプルサイトのコピー" width="800">
 
 3. Web ブラウザで `http://<VMのパブリックIPアドレス>/` に再度アクセスし、Ctrl + F5（スーパーリロード）で画面を更新します。
 
 4. メッセージ入力欄の上に赤い枠で「config.js の設定が済んでいません。次の項目を書き換えてください：ENDPOINT、API_KEY」という案内が表示され、メッセージの入力欄が無効化されていることを確認します。
 
-    ![サンプルチャットサイトの初期表示](./media/lab03-17.png)
+    <img src="./media/lab03-17.png" alt="サンプルチャットサイトの初期表示" width="420">
 
     > 注：これは正常な状態です。`config.js` に接続先を書き込んでいないため、あえてエラーを表示して知らせる仕組みが組み込まれています。実際に AI と会話できるようにする設定は、Lab04（AI Foundry の作成と接続）で行います。
 

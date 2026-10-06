@@ -47,7 +47,7 @@ grep -A1 "SYSTEM_PROMPT" /var/www/html/config.js
 > 注：`config.js` 全体を `cat` で表示すると、API キーも画面に表示されます。
 > 画面を他の人に見せる場面では、上の `grep` コマンドを使ってください。
 
-![現在のシステムプロンプト](./media/lab05-01.png)
+<img src="./media/lab05-01.png" alt="現在のシステムプロンプト" width="800">
 
 ### 1-2　4 つの質問を投げる
 
@@ -62,7 +62,7 @@ grep -A1 "SYSTEM_PROMPT" /var/www/html/config.js
 成形機の温度設定を変える手順を教えてください
 ```
 
-![調整前の応答（Q1）](./media/lab05-02.png)
+<img src="./media/lab05-02.png" alt="調整前の応答（Q1）" width="420">
 
 **Q2**（見るところ：答えるべきでないことに答えていないか）
 
@@ -70,7 +70,7 @@ grep -A1 "SYSTEM_PROMPT" /var/www/html/config.js
 おすすめのラーメン屋を教えてください
 ```
 
-![調整前の応答（Q2）](./media/lab05-03.png)
+<img src="./media/lab05-03.png" alt="調整前の応答（Q2）" width="420">
 
 **Q3**（見るところ：知らないことをどう扱うか）
 
@@ -78,7 +78,7 @@ grep -A1 "SYSTEM_PROMPT" /var/www/html/config.js
 3 号機のエラーコード E-447 の意味は
 ```
 
-![調整前の応答（Q3）](./media/lab05-04.png)
+<img src="./media/lab05-04.png" alt="調整前の応答（Q3）" width="420">
 
 **Q4**（見るところ：範囲外への対応）
 
@@ -86,7 +86,7 @@ grep -A1 "SYSTEM_PROMPT" /var/www/html/config.js
 今日の天気は
 ```
 
-![調整前の応答（Q4）](./media/lab05-05.png)
+<img src="./media/lab05-05.png" alt="調整前の応答（Q4）" width="420">
 
 ### 1-3　気づいたことを書く
 
@@ -113,7 +113,7 @@ grep -A1 "SYSTEM_PROMPT" /var/www/html/config.js
 sudo cp /var/www/html/config.js ~/config.js.bak
 ```
 
-![config.js の控え](./media/lab05-06.png)
+<img src="./media/lab05-06.png" alt="config.js の控え" width="800">
 
 > 控えを取るのは数秒で済みます。失敗したときに戻せます。
 
@@ -142,7 +142,7 @@ EOF
 
 > 注：`prompt.txt` は自分のホームディレクトリに作るファイルなので、`sudo` は不要です。
 
-![prompt.txt の作成](./media/lab05-07.png)
+<img src="./media/lab05-07.png" alt="prompt.txt の作成" width="800">
 
 ### 2-3　反映する
 
@@ -177,9 +177,9 @@ grep -A15 "SYSTEM_PROMPT" /var/www/html/config.js
 > 注：このコマンドは、`prompt.txt` の中身を毎回まるごと書き込み直します。
 > 以降のタスクでも、`prompt.txt` に追記したあと、同じコマンドで反映します。
 
-![プロンプトの反映](./media/lab05-08.png)
+<img src="./media/lab05-08.png" alt="プロンプトの反映" width="800">
 
-![反映結果の確認](./media/lab05-09.png)
+<img src="./media/lab05-09.png" alt="反映結果の確認" width="800">
 
 ### 2-4　確かめる
 
@@ -220,11 +220,11 @@ grep -A15 "SYSTEM_PROMPT" /var/www/html/config.js
 
 > ワークブックに、何を変えて答えがどう変わったかを書いてください。
 
-![範囲外の質問を断る応答（Q2・Q4）](./media/lab05-10.png)
+<img src="./media/lab05-10.png" alt="範囲外の質問を断る応答（Q2・Q4）" width="420">
 
-![まだ長い応答（Q1）](./media/lab05-11.png)
+<img src="./media/lab05-11.png" alt="まだ長い応答（Q1）" width="420">
 
-![まだ作り話をする応答（Q3）](./media/lab05-12.png)
+<img src="./media/lab05-12.png" alt="まだ作り話をする応答（Q3）" width="420">
 
 ---
 
@@ -268,7 +268,7 @@ sed -i 's/3 文以内/5 文以内/' ~/prompt.txt
 
 **一度に一か所だけ変えてください。**同時に複数を変えると、どれが効いたのか分かりません。
 
-![短くなった応答](./media/lab05-13.png)
+<img src="./media/lab05-13.png" alt="短くなった応答" width="420">
 
 ### 3-3　同じ質問で比べる
 
@@ -346,7 +346,7 @@ Q3 を投げ直します。断るようになったでしょうか。
 実績入力の画面はどこから開きますか
 ```
 
-![「分かりかねます」の応答](./media/lab05-14.png)
+<img src="./media/lab05-14.png" alt="「分かりかねます」の応答" width="420">
 
 ### 4-4　断りすぎていないか
 
@@ -403,7 +403,7 @@ Q3 を投げ直します。断るようになったでしょうか。
 | 4 | 普通に答える |
 | 5 | 普通に答える |
 
-![最終確認](./media/lab05-15.png)
+<img src="./media/lab05-15.png" alt="最終確認" width="420">
 
 ### 5-2　完成したプロンプトを保存
 
