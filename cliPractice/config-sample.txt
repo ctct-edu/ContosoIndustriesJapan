@@ -1,0 +1,6 @@
+# 接続設定のサンプル（練習用）。ここに書かれている値はすべてダミーです
+SERVICE_NAME=chatbot
+ENDPOINT=https://example.invalid/
+API_KEY=DUMMY-KEY-REPLACE-ME
+MAX_SENTENCES=3
+LANGUAGE=ja
