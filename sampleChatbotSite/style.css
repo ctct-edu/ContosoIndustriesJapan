@@ -1,31 +1,92 @@
 /* ============================================================
-   AI チャット サンプルサイト - スタイルシート
-   色やサイズを変えたいときはこのファイルを編集します。
+   質問チャット サンプルサイト - スタイルシート
 
-   仕様：
-   - 色・角丸・幅は :root の変数で一元管理する
-   - 横長の画面を使う（最大幅 1280px）。会話は画面いっぱいに広げる
-   - 素材パネルは、画面の右上に浮かぶパネル（フローティング）。一覧は 2 列にして、スクロールせずに見渡せるようにする
+   ■ このファイルの使い方（見た目を変えたい人へ）
+   1. まず、下の「:root」の変数だけを変えてみてください。
+      色、文字の大きさ、角丸、幅が、この変数でまとめて変わります。
+   2. 変数で足りないときは、各ブロックの見出し（■ ○○）を探して、
+      そのブロックの中を直します。ブロックは、画面の部品ごとに分けています。
+   3. 変えたら、ブラウザを Ctrl+F5 で再読み込みして確かめます。
+      うまくいかなければ、変えた行を元に戻します。
+
+   ■ 生成 AI に頼むときのコツ
+   - この style.css の全文と、index.html の全文を、AI に貼り付けます。
+   - 「変数（:root）だけを変えて、○○な雰囲気にしてください」と頼むと、壊れにくいです。
+   - 「変更した行だけでなく、style.css の全文を出してください」と頼み、
+     返ってきた全文で、このファイルを丸ごと置き換えます。
+   - 触ってはいけない部分：
+     ・.header__debug（右上のデバッグボタン）と、.mode-debug で始まる設定
+     ・.materials で始まる設定（デバッグ用の素材パネル）
+     ・クラス名そのもの（index.html と app.js が、この名前で部品を探しています）
+
+   ■ 部品とクラス名の対応
+   .header              画面上部の見出し（会社名・サブタイトル）
+   .chat__log           会話が並ぶ領域
+   .msg--user           自分（利用者）の吹き出し
+   .msg--ai             AI の吹き出し
+   .msg--error          エラーの吹き出し
+   .composer            下の入力欄と［送信］ボタン
+   .materials           素材パネル（デバッグモードのときだけ表示）
+
+   ■ 仕様
+   - 色・文字・角丸・幅は :root の変数で一元管理する
+   - 横長の画面を使う。会話は画面いっぱいに広げる
+   - 素材パネルは、画面の右上に浮かぶパネル。一覧は 2 列にして、スクロールせずに見渡せるようにする
    - 900px 以下では、パネルを画面幅いっぱいにして、一覧を 1 列にする
-   - 素材パネルは、デバッグモード（body.mode-debug）のときだけ表示する。通常は非表示
+   - 素材パネルは、デバッグモード（body.mode-debug）のときだけ表示する
    - デバッグモードは、画面右上の「デバッグ」ボタンで切り替える（URL は変えない）
    - スクロールバーは、細く目立たない見た目にそろえる
-   - 素材パネルの開閉の矢印は大きく表示する
-   - 吹き出し、入力欄の見た目は変えない
    ============================================================ */
 
 :root {
-  --bg: #f1f3f2;
-  --surface: #ffffff;
-  --ink: #1b2422;
-  --muted: #6c7772;
-  --line: #dde2e0;
+  /* ----- 色：全体 ----- */
+  --bg: #f1f3f2;              /* ページの背景 */
+  --surface: #ffffff;         /* 白いカード（ヘッダー、入力欄）の背景 */
+  --ink: #1b2422;             /* 文字の色 */
+  --muted: #6c7772;           /* 補足の文字の色 */
+  --line: #dde2e0;            /* 枠線の色 */
+
+  /* ----- 色：メインカラー（ボタン、利用者の吹き出し、ヘッダーの上線） ----- */
   --accent: #10566b;
-  --accent-soft: #e5eef1;
+  --accent-hover: var(--accent-hover);    /* ボタンにマウスを乗せたときの色 */
+  --accent-soft: #e5eef1;     /* 入力欄の外側の薄い色 */
+  --on-accent: #ffffff;       /* メインカラーの上に置く文字（ボタンの文字） */
+
+  /* ----- 色：吹き出し ----- */
+  --user-bg: var(--accent);   /* 自分の吹き出しの背景 */
+  --user-ink: #ffffff;        /* 自分の吹き出しの文字 */
+  --ai-bg: var(--surface);    /* AI の吹き出しの背景 */
+  --ai-ink: var(--ink);       /* AI の吹き出しの文字 */
+
+  /* ----- 色：エラーと無効 ----- */
   --danger: #9b3232;
   --danger-soft: #fbeceb;
-  --radius: 10px;
-  --max-width: 1280px;
+  --danger-line: var(--danger-line);
+  --disabled: var(--disabled);        /* 押せないボタンの色 */
+
+  /* ----- 色：スクロールバー ----- */
+  --scroll-thumb: var(--scroll-thumb);
+  --scroll-thumb-hover: var(--scroll-thumb-hover);
+
+  /* ----- 文字 ----- */
+  --font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    "Meiryo", system-ui, sans-serif;
+  --font-size-base: 16px;     /* 本文の大きさ */
+  --font-size-title: 20px;    /* 見出し（会社名）の大きさ */
+  --font-size-small: 13px;    /* サブタイトルなど小さい文字 */
+  --line-height: 1.75;        /* 行の高さ */
+
+  /* ----- 形とすき間 ----- */
+  --radius: 10px;             /* 角の丸み（吹き出し、カード） */
+  --radius-small: 6px;        /* 角の丸み（ボタン） */
+  --gap: 14px;                /* 吹き出し同士のすき間 */
+  --page-padding: 20px;       /* ページの外側の余白 */
+
+  /* ----- 大きさ ----- */
+  --max-width: 1280px;        /* 画面の最大幅 */
+  --msg-max-width: 70%;       /* 吹き出しの最大幅（会話領域に対する割合） */
+  --panel-width: 780px;       /* 素材パネルの幅（デバッグ用） */
+  --panel-top: 76px;          /* 素材パネルの上からの位置（デバッグ用） */
 }
 
 * {
@@ -43,13 +104,12 @@ body {
   flex-direction: column;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
-    "Meiryo", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.75;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
 }
 
-/* ---------- ヘッダー ---------- */
+/* ---------- ■ ヘッダー（画面上部の会社名とサブタイトル） ---------- */
 
 .header {
   padding: 18px 20px;
@@ -63,7 +123,7 @@ body {
   max-width: var(--max-width);
   margin-inline: auto;
   padding-inline: 20px;
-  font-size: 20px;
+  font-size: var(--font-size-title);
   font-weight: 700;
   letter-spacing: 0.03em;
 }
@@ -73,18 +133,18 @@ body {
   max-width: var(--max-width);
   padding-inline: 20px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--font-size-small);
   line-height: 1.5;
 }
 
-/* ---------- チャット領域 ---------- */
+/* ---------- ■ チャット領域（会話が並ぶ場所） ---------- */
 
 .layout {
   flex: 1;
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding: 20px;
+  padding: var(--page-padding);
   display: flex;
   align-items: stretch;
   gap: 16px;
@@ -109,10 +169,10 @@ body {
   padding-right: 4px;
 }
 
-/* ---------- 吹き出し ---------- */
+/* ---------- ■ 吹き出し（利用者・AI・エラー）。色は :root の --user-bg / --ai-bg で変える ---------- */
 
 .msg {
-  max-width: 70%;
+  max-width: var(--msg-max-width);
   padding: 12px 16px;
   border-radius: var(--radius);
   white-space: pre-wrap;
@@ -121,14 +181,15 @@ body {
 
 .msg--user {
   align-self: flex-end;
-  background: var(--accent);
-  color: #ffffff;
+  background: var(--user-bg);
+  color: var(--user-ink);
   border-bottom-right-radius: 2px;
 }
 
 .msg--ai {
   align-self: flex-start;
-  background: var(--surface);
+  background: var(--ai-bg);
+  color: var(--ai-ink);
   border: 1px solid var(--line);
   border-bottom-left-radius: 2px;
 }
@@ -136,7 +197,7 @@ body {
 .msg--error {
   align-self: flex-start;
   background: var(--danger-soft);
-  border: 1px solid #eccfcc;
+  border: 1px solid var(--danger-line);
   color: var(--danger);
   font-size: 14px;
   line-height: 1.7;
@@ -179,14 +240,14 @@ body {
   margin: 0;
   padding: 12px 16px;
   background: var(--danger-soft);
-  border: 1px solid #eccfcc;
+  border: 1px solid var(--danger-line);
   border-radius: var(--radius);
   color: var(--danger);
   font-size: 14px;
   line-height: 1.7;
 }
 
-/* ---------- 入力欄 ---------- */
+/* ---------- ■ 入力欄（下のメッセージ欄と［送信］ボタン） ---------- */
 
 .composer {
   display: flex;
@@ -221,20 +282,20 @@ body {
 .composer__send {
   padding: 9px 20px;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--radius-small);
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
 }
 
 .composer__send:hover:not(:disabled) {
-  background: #0d4757;
+  background: var(--accent-hover);
 }
 
 .composer__send:disabled {
-  background: #b4c0c4;
+  background: var(--disabled);
   cursor: not-allowed;
 }
 
@@ -244,7 +305,7 @@ body {
   outline-offset: 2px;
 }
 
-/* ---------- 素材パネル ---------- */
+/* ---------- ■ 素材パネル（デバッグ用。ここは変えないでください） ---------- */
 
 .materials {
   flex-shrink: 0;
@@ -255,7 +316,7 @@ body {
 }
 
 .materials[open] {
-  width: min(780px, calc(100vw - 48px));
+  width: min(var(--panel-width), calc(100vw - 48px));
 }
 
 /* デバッグモード以外では、素材パネルを出さない */
@@ -266,7 +327,7 @@ body {
 .mode-debug .materials {
   display: block;
   position: fixed;
-  top: 76px;
+  top: var(--panel-top);
   right: 24px;
   z-index: 20;
   box-shadow: 0 10px 32px rgba(16, 40, 48, 0.2);
@@ -340,7 +401,7 @@ body {
   display: inline-block;
   padding: 6px 14px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: var(--radius-small);
   background: var(--surface);
   color: var(--ink);
   font: inherit;
@@ -355,12 +416,12 @@ body {
 .btn--primary {
   border-color: var(--accent);
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
   font-weight: 700;
 }
 
 .btn--primary:hover {
-  background: #0d4757;
+  background: var(--accent-hover);
 }
 
 .btn:focus-within,
@@ -373,7 +434,7 @@ body {
   margin: 10px 0 0;
   padding: 10px;
   border: 1px dashed var(--line);
-  border-radius: 6px;
+  border-radius: var(--radius-small);
   color: var(--muted);
   font-size: 13px;
   text-align: center;
@@ -429,7 +490,7 @@ body {
 .mat__btn {
   padding: 1px 8px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: var(--radius-small);
   background: var(--surface);
   color: var(--ink);
   font: inherit;
@@ -448,7 +509,7 @@ body {
   max-height: 240px;
   overflow: auto;
   background: var(--bg);
-  border-radius: 6px;
+  border-radius: var(--radius-small);
   font-family: inherit;
   font-size: 13px;
   line-height: 1.6;
@@ -483,7 +544,7 @@ body {
   transform: translateY(-50%);
   padding: 5px 14px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: var(--radius-small);
   background: var(--surface);
   color: var(--muted);
   font: inherit;
@@ -509,7 +570,7 @@ body {
 .materials__prompt,
 .composer__input {
   scrollbar-width: thin;
-  scrollbar-color: #c9d0ce transparent;
+  scrollbar-color: var(--scroll-thumb) transparent;
 }
 
 .materials__body::-webkit-scrollbar,
@@ -531,13 +592,13 @@ body {
 .chat__log::-webkit-scrollbar-thumb,
 .mat__body::-webkit-scrollbar-thumb,
 .materials__prompt::-webkit-scrollbar-thumb {
-  background: #c9d0ce;
+  background: var(--scroll-thumb);
   border-radius: 3px;
 }
 
 .materials__body::-webkit-scrollbar-thumb:hover,
 .chat__log::-webkit-scrollbar-thumb:hover {
-  background: #a9b3b0;
+  background: var(--scroll-thumb-hover);
 }
 
 /* ---------- 補助 ---------- */

@@ -9,6 +9,11 @@
   - 素材パネルで、.txt の素材を追加し、オン・オフを切り替える。追加した素材は、通常の画面にも反映される
   - オンの素材は、config.js の SYSTEM_PROMPT の後ろに連結して AI に送る（処理は app.js）
   - config.js を app.js より先に読み込む
+
+  見た目を変えるときのヒント（生成 AI に頼むときは、この index.html も一緒に貼り付けます）：
+  - 見た目は style.css で決める。部品とクラス名の対応は、style.css の先頭に書いてある
+  - クラス名・id は、style.css と app.js が使っているため、変えない
+  - 見出しの文言は config.js の TITLE / SUBTITLE で変える（このファイルは直さない）
 -->
 <html lang="ja">
 <head>
