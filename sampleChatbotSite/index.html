@@ -2,8 +2,11 @@
 <!--
   AI チャット サンプルサイト - 画面の骨組み
   仕様：
-  - ヘッダー、素材パネル、会話ログ、入力欄の 4 つで構成する
-  - 素材パネルは折りたたみ式（初期状態は閉じる）。.txt の素材を追加し、オン・オフを切り替える
+  - ヘッダー、会話ログ、入力欄、素材パネルの 4 つで構成する
+  - 横長の画面を使う。会話は左の広い領域、素材パネルは右側に置く
+  - 通常の画面は、会話だけを表示する（素材パネルは出さない）
+  - バックモード：URL の末尾に ?mode=back を付けて開くと、右側に素材パネルが現れる（管理者用）
+  - 素材パネルで、.txt の素材を追加し、オン・オフを切り替える。追加した素材は、通常の画面にも反映される
   - オンの素材は、config.js の SYSTEM_PROMPT の後ろに連結して AI に送る（処理は app.js）
   - config.js を app.js より先に読み込む
 -->
@@ -11,43 +14,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI チャット</title>
+  <title>Contoso Industries Japan　質問チャット</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
-    <h1 class="header__title" id="site-title">AI チャット</h1>
-    <p class="header__note" id="site-subtitle">Azure AI Foundry に接続しています</p>
+    <h1 class="header__title" id="site-title">Contoso Industries Japan　質問チャット</h1>
+    <span class="header__badge">バックモード</span>
+    <p class="header__note" id="site-subtitle">設備や社内システムのことを、お気軽にご質問ください</p>
   </header>
 
+  <div class="layout">
   <main class="chat">
-    <!-- 素材パネル：ヒアリングで手に入れた .txt を追加して、AI に読ませる -->
-    <details class="materials" id="materials">
-      <summary class="materials__summary">
-        <span class="materials__title">素材</span>
-        <span class="materials__count" id="mat-count">素材はまだありません</span>
-      </summary>
-
-      <div class="materials__body">
-        <div class="materials__actions">
-          <label class="btn btn--primary">
-            ファイルを追加
-            <input type="file" id="mat-file" accept=".txt,text/plain" multiple hidden>
-          </label>
-          <button type="button" class="btn" id="mat-preview">送る内容を確認</button>
-          <button type="button" class="btn" id="chat-clear">会話をクリア</button>
-        </div>
-
-        <p class="materials__drop" id="mat-drop">ここに .txt ファイルをドラッグ＆ドロップしても追加できます</p>
-
-        <ul class="materials__list" id="mat-list"></ul>
-
-        <p class="materials__msg" id="mat-msg" hidden></p>
-
-        <pre class="materials__prompt" id="mat-prompt" hidden></pre>
-      </div>
-    </details>
-
     <div class="chat__log" id="log" aria-live="polite" aria-label="会話"></div>
 
     <p class="notice" id="notice" hidden></p>
@@ -63,8 +41,43 @@
     </div>
   </main>
 
+      <!-- 素材パネル：ヒアリングで手に入れた .txt を追加して、AI に読ませる -->
+      <details class="materials" id="materials">
+        <summary class="materials__summary">
+          <span class="materials__title">素材</span>
+          <span class="materials__count" id="mat-count">素材はまだありません</span>
+        </summary>
+
+        <div class="materials__body">
+          <div class="materials__actions">
+            <label class="btn btn--primary">
+              ファイルを追加
+              <input type="file" id="mat-file" accept=".txt,text/plain" multiple hidden>
+            </label>
+            <button type="button" class="btn" id="mat-preview">送る内容を確認</button>
+            <button type="button" class="btn" id="chat-clear">会話をクリア</button>
+          </div>
+
+          <p class="materials__drop" id="mat-drop">ここに .txt ファイルをドラッグ＆ドロップしても追加できます</p>
+
+          <ul class="materials__list" id="mat-list"></ul>
+
+          <p class="materials__msg" id="mat-msg" hidden></p>
+
+          <pre class="materials__prompt" id="mat-prompt" hidden></pre>
+        </div>
+      </details>
+  </div>
+
   <!-- 設定ファイル（接続先・APIキー）を先に読み込みます -->
   <script src="config.js"></script>
+  <!-- バックモードの判定：?mode=back のとき、素材パネルを表示して開く -->
+  <script>
+    if (new URLSearchParams(location.search).get("mode") === "back") {
+      document.body.classList.add("mode-back");
+      document.getElementById("materials").open = true;
+    }
+  </script>
   <script src="app.js"></script>
 </body>
 </html>

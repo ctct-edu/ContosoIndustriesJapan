@@ -31,8 +31,8 @@ const CONFIG = {
   GREETING: "こんにちは。聞きたいことを入力してください。",
 
   // 画面上部の見出し
-  TITLE: "AI チャット",
-  SUBTITLE: "Azure AI Foundry に接続しています",
+  TITLE: "Contoso Industries Japan　質問チャット",
+  SUBTITLE: "設備や社内システムのことを、お気軽にご質問ください",
 
   // 1 回の応答の最大長さ
   MAX_TOKENS: 800,
