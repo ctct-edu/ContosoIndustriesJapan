@@ -24,7 +24,7 @@ Lab03 で配置したサンプルチャットサイトは、まだ AI と会話�
 
     | 項目 | 値 |
     |---|---|
-    | サブスクリプション | 従量課金 |
+    | サブスクリプション | 講師が用意したサブスクリプション |
     | リソース グループ | rg-intern-YYMMDD-NN |
     | 名前 | aif-intern-YYMMDD-NN |
     | リージョン | (Asia Pacific) Japan East |

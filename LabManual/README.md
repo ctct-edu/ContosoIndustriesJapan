@@ -1,30 +1,26 @@
 # SIer 体験研修 ハンズオン手順書
 
 「SIer 体験研修」で使用するハンズオン手順書です。
-Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チャットサイトを公開し、システムプロンプトと素材で自分たちのチャットボットに仕上げるまでを扱います。
+Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チャットサイトを公開するまでを扱います。
 
 ## 手順書一覧
 
 | Lab | タイトル | 内容 | 推定時間 | 実施日 |
 |---|---|---|---|---|
 | [Lab00](./Lab00_SignIn.md) | Azure へのサインイン | サインイン、多要素認証の登録 | 15分 | Day3 |
-| [Lab01](./Lab01_ResourceGroupAndNetwork.md) | リソース グループ・ネットワークの作成 | リソースグループ、VNet、NSG の作成と受信規則の追加 | 60分 | Day3 |
+| [Lab01](./Lab01_ResourceGroupAndNetwork.md) | ネットワークの作成 | 割り当て済みリソース グループの確認、VNet、NSG の作成と受信規則の追加 | 60分 | Day3 |
 | [Lab02](./Lab02_CreateVirtualMachine.md) | 仮想マシンの作成と接続 | VM の作成、PowerShell での SSH 接続 | 60分 | Day3 |
-| [Lab02b](./Lab02b_CLIPractice.md) | CLI の練習 | pwd・ls・cd・cat・sudo でサーバーの中を見て回る | 20分 | Day3 |
 | [Lab03](./Lab03_BuildWebServer.md) | Web サーバーの構築 | nginx の導入、サンプルチャットサイトの配置 | 40分 | Day4 |
 | [Lab04](./Lab04_DeployAIFoundry.md) | AI Foundry の作成と接続 | AI Foundry リソースの作成、モデルのデプロイ、config.js への接続情報の書き込み | 60分 | Day4 |
-| [Lab05](./Lab05_TuneSystemPrompt.md) | システムプロンプトの基本 | システムプロンプトの書き換え、答える範囲と答え方の調整、外国語への対応（発展） | 30分 | Day4 |
-| [Lab06](./Lab06_AddMaterials.md) | 素材を入れて、自分たちのチャットボットにする | 素材（.txt）の追加、素材あり・なしの比較、外国語での確認（発展） | 30分 | Day4 |
-| [Lab07](./Lab07_Advanced.md) | チャットボットをさらに磨く（選択制） | 長さの調整など、興味のある課題を選んで取り組む | 時間が余った分 | Day4 |
 
-Lab00 から Lab06 までは、記載された手順のとおりに進めます。Lab07 は選択制です。
+Lab00 から Lab04 までは、記載された手順のとおりに進めます。
 
 ## 前提条件
 
 - Azure Portal にサインイン可能なアカウント（講師から配付）
 - 多要素認証に使用するスマートフォン
 - ローカル PC（Windows、PowerShell 使用）
-- リソース名は `rg-intern-YYMMDD-NN` 形式に置き換えて進めてください
+- リソース グループは講師が事前に作成します（自分では作成しません）。名前は `rg-intern-YYMMDD-NN` 形式で、講師から伝えられます
   - `YYMMDD` は実施日。2026 年 10 月 27 日であれば `261027`
   - `NN` は自分の番号。3 番であれば `03`
   - 例：`rg-intern-261027-03`
@@ -43,7 +39,6 @@ Lab00 から Lab06 までは、記載された手順のとおりに進めます�
 Lab03 で配置するチャットサイトは、[`../sampleChatbotSite`](../sampleChatbotSite) に置いています。
 `config.js` の 2 か所（`ENDPOINT`・`API_KEY`）を、Lab04 で作成する AI Foundry の情報に書き換えることで動作します
 （`DEPLOYMENT` は全員共通の `gpt-5.4-nano` で固定してあるため、書き換え不要です）。
-Lab05 では `SYSTEM_PROMPT`（答え方の指示）を書き換え、Lab06 では、画面右上の [デバッグ] ボタンで開く素材パネルから、素材を追加します。
 
 
 ## つまずいたときは
