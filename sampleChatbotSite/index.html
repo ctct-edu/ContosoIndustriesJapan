@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!--
+  AI チャット サンプルサイト - 画面の骨組み
+  仕様：
+  - ヘッダー、素材パネル、会話ログ、入力欄の 4 つで構成する
+  - 素材パネルは折りたたみ式（初期状態は閉じる）。.txt の素材を追加し、オン・オフを切り替える
+  - オンの素材は、config.js の SYSTEM_PROMPT の後ろに連結して AI に送る（処理は app.js）
+  - config.js を app.js より先に読み込む
+-->
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -13,6 +21,33 @@
   </header>
 
   <main class="chat">
+    <!-- 素材パネル：ヒアリングで手に入れた .txt を追加して、AI に読ませる -->
+    <details class="materials" id="materials">
+      <summary class="materials__summary">
+        <span class="materials__title">素材</span>
+        <span class="materials__count" id="mat-count">素材はまだありません</span>
+      </summary>
+
+      <div class="materials__body">
+        <div class="materials__actions">
+          <label class="btn btn--primary">
+            ファイルを追加
+            <input type="file" id="mat-file" accept=".txt,text/plain" multiple hidden>
+          </label>
+          <button type="button" class="btn" id="mat-preview">送る内容を確認</button>
+          <button type="button" class="btn" id="chat-clear">会話をクリア</button>
+        </div>
+
+        <p class="materials__drop" id="mat-drop">ここに .txt ファイルをドラッグ＆ドロップしても追加できます</p>
+
+        <ul class="materials__list" id="mat-list"></ul>
+
+        <p class="materials__msg" id="mat-msg" hidden></p>
+
+        <pre class="materials__prompt" id="mat-prompt" hidden></pre>
+      </div>
+    </details>
+
     <div class="chat__log" id="log" aria-live="polite" aria-label="会話"></div>
 
     <p class="notice" id="notice" hidden></p>
