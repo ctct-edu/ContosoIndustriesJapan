@@ -151,11 +151,13 @@ Lab03 で配置したサンプルチャットサイトは、まだ AI と会話�
 
     ![エンドポイントの確認](./media/lab04-18.png)
 
-3. `config.js` の `ENDPOINT` を書き換えます。
+3. `config.js` の `ENDPOINT` を書き換えます。以下のコマンドは**一文字も書き換えずに**、そのまま貼り付けて実行します。
 
     ```bash
-    sudo sed -i "s|<<エンドポイントを貼り付け>>|$ENDPOINT|" /var/www/html/config.js
+    sudo sed -i "s|^\( *ENDPOINT:\).*|\1 \"$ENDPOINT\",|" /var/www/html/config.js
     ```
+
+    > 注：`$ENDPOINT` の部分には、手順2 で変数に入れた値が自動的に入ります。エンドポイントの URL を自分でコマンドに書き込む必要はありません。値を間違えた場合は、手順1 からやり直してこのコマンドをもう一度実行すれば上書きされます。
 
 4. API キーを変数に入れます。
 
@@ -165,11 +167,13 @@ Lab03 で配置したサンプルチャットサイトは、まだ AI と会話�
 
     Enter キーを押した後、タスク3でコピーした「キー 1」の値を貼り付けて、再度 Enter キーを押します。
 
-5. `config.js` の `API_KEY` を書き換えます。
+5. `config.js` の `API_KEY` を書き換えます。このコマンドも**一文字も書き換えずに**、そのまま貼り付けて実行します。
 
     ```bash
-    sudo sed -i "s|<<APIキーを貼り付け>>|$API_KEY|" /var/www/html/config.js
+    sudo sed -i "s|^\( *API_KEY:\).*|\1 \"$API_KEY\",|" /var/www/html/config.js
     ```
+
+    > 注：`$API_KEY` の部分には、手順4 で変数に入れたキーが自動的に入ります。
 
 6. 書き換えた内容を確認します。
 
