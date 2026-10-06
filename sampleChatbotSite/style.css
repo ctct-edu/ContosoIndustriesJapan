@@ -4,10 +4,12 @@
 
    仕様：
    - 色・角丸・幅は :root の変数で一元管理する
-   - 横長の画面を使う（最大幅 1280px）。会話は左の広い領域、素材パネルは右側
-   - 素材パネルは右端で折りたたみ、開くと 440px の列になる。900px 以下では縦に並べる
-   - 素材パネルは、バックモード（body.mode-back）のときだけ表示する。通常は非表示
-   - バックモードは、画面下の小さなボタンで切り替える（URL は変えない）
+   - 横長の画面を使う（最大幅 1280px）。会話は画面いっぱいに広げる
+   - 素材パネルは、画面の右上に浮かぶパネル（フローティング）。一覧は 2 列にして、スクロールせずに見渡せるようにする
+   - 900px 以下では、パネルを画面幅いっぱいにして、一覧を 1 列にする
+   - 素材パネルは、デバッグモード（body.mode-debug）のときだけ表示する。通常は非表示
+   - デバッグモードは、画面右上の「デバッグ」ボタンで切り替える（URL は変えない）
+   - スクロールバーは、細く目立たない見た目にそろえる
    - 素材パネルの開閉の矢印は大きく表示する
    - 吹き出し、入力欄の見た目は変えない
    ============================================================ */
@@ -253,16 +255,21 @@ body {
 }
 
 .materials[open] {
-  width: 440px;
+  width: min(780px, calc(100vw - 48px));
 }
 
-/* バックモード以外では、素材パネルを出さない */
+/* デバッグモード以外では、素材パネルを出さない */
 .materials {
   display: none;
 }
 
-.mode-back .materials {
+.mode-debug .materials {
   display: block;
+  position: fixed;
+  top: 76px;
+  right: 24px;
+  z-index: 20;
+  box-shadow: 0 10px 32px rgba(16, 40, 48, 0.2);
 }
 
 .header__badge {
@@ -275,7 +282,7 @@ body {
   font-weight: 700;
 }
 
-.mode-back .header__badge {
+.mode-debug .header__badge {
   display: block;
 }
 
@@ -319,7 +326,7 @@ body {
 
 .materials__body {
   padding: 0 16px 14px;
-  max-height: calc(100vh - 220px);
+  max-height: calc(100vh - 170px);
   overflow-y: auto;
 }
 
@@ -382,6 +389,10 @@ body {
   margin: 10px 0 0;
   padding: 0;
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  align-items: start;
 }
 
 .mat {
@@ -391,8 +402,8 @@ body {
 .mat__row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 0;
+  gap: 8px;
+  padding: 4px 0;
 }
 
 .mat__name {
@@ -416,7 +427,7 @@ body {
 }
 
 .mat__btn {
-  padding: 2px 10px;
+  padding: 1px 8px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--surface);
@@ -459,25 +470,74 @@ body {
   color: var(--danger);
 }
 
-/* ---------- 画面下のバックモード切り替え ---------- */
+/* ---------- 右上のデバッグ切り替え ---------- */
 
-.footer {
-  padding: 4px 20px 10px;
-  text-align: right;
+.header {
+  position: relative;
 }
 
-.footer__btn {
-  border: 0;
-  background: transparent;
+.header__debug {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  padding: 5px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
   color: var(--muted);
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
 }
 
-.footer__btn:hover {
+.header__debug:hover {
+  border-color: var(--accent);
   color: var(--accent);
-  text-decoration: underline;
+}
+
+.mode-debug .header__debug {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* ---------- スクロールバー（細く、目立たない見た目） ---------- */
+
+.materials__body,
+.chat__log,
+.mat__body,
+.materials__prompt,
+.composer__input {
+  scrollbar-width: thin;
+  scrollbar-color: #c9d0ce transparent;
+}
+
+.materials__body::-webkit-scrollbar,
+.chat__log::-webkit-scrollbar,
+.mat__body::-webkit-scrollbar,
+.materials__prompt::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.materials__body::-webkit-scrollbar-track,
+.chat__log::-webkit-scrollbar-track,
+.mat__body::-webkit-scrollbar-track,
+.materials__prompt::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.materials__body::-webkit-scrollbar-thumb,
+.chat__log::-webkit-scrollbar-thumb,
+.mat__body::-webkit-scrollbar-thumb,
+.materials__prompt::-webkit-scrollbar-thumb {
+  background: #c9d0ce;
+  border-radius: 3px;
+}
+
+.materials__body::-webkit-scrollbar-thumb:hover,
+.chat__log::-webkit-scrollbar-thumb:hover {
+  background: #a9b3b0;
 }
 
 /* ---------- 補助 ---------- */
@@ -496,12 +556,15 @@ body {
     flex-direction: column-reverse;
     padding: 14px;
   }
-  .materials,
-  .materials[open] {
-    width: 100%;
+  .mode-debug .materials {
+    left: 12px;
+    right: 12px;
   }
-  .materials__body {
-    max-height: 45vh;
+  .materials[open] {
+    width: auto;
+  }
+  .materials__list {
+    grid-template-columns: 1fr;
   }
   .msg { max-width: 90%; }
 }

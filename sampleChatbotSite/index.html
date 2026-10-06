@@ -5,7 +5,7 @@
   - ヘッダー、会話ログ、入力欄、素材パネルの 4 つで構成する
   - 横長の画面を使う。会話は左の広い領域、素材パネルは右側に置く
   - 通常の画面は、会話だけを表示する（素材パネルは出さない）
-  - バックモード：画面下の「バックモード」ボタンで切り替える（URL は同じ）。オンにすると右側に素材パネルが現れる（管理者用）。状態はブラウザに保存する
+  - デバッグモード：画面右上の「デバッグ」ボタンで切り替える（URL は同じ）。オンにすると右側に素材パネルが現れる（管理者用）。状態はブラウザに保存する
   - 素材パネルで、.txt の素材を追加し、オン・オフを切り替える。追加した素材は、通常の画面にも反映される
   - オンの素材は、config.js の SYSTEM_PROMPT の後ろに連結して AI に送る（処理は app.js）
   - config.js を app.js より先に読み込む
@@ -20,8 +20,9 @@
 <body>
   <header class="header">
     <h1 class="header__title" id="site-title">Contoso Industries Japan　質問チャット</h1>
-    <span class="header__badge">バックモード</span>
+    <span class="header__badge">デバッグモード</span>
     <p class="header__note" id="site-subtitle">設備や社内システムのことを、お気軽にご質問ください</p>
+    <button type="button" class="header__debug" id="debug-toggle">デバッグ</button>
   </header>
 
   <div class="layout">
@@ -69,20 +70,16 @@
       </details>
   </div>
 
-  <footer class="footer">
-    <button type="button" class="footer__btn" id="back-toggle">バックモード</button>
-  </footer>
-
   <!-- 設定ファイル（接続先・APIキー）を先に読み込みます -->
   <script src="config.js"></script>
-  <!-- バックモードの切り替え：画面下のボタンで、素材パネルの表示・非表示を切り替える -->
+  <!-- デバッグモードの切り替え：画面右上のボタンで、素材パネルの表示・非表示を切り替える -->
   <script>
     (function () {
-      var KEY = "chatbot-backmode";
-      var btn = document.getElementById("back-toggle");
+      var KEY = "chatbot-debugmode";
+      var btn = document.getElementById("debug-toggle");
       function apply(on) {
-        document.body.classList.toggle("mode-back", on);
-        btn.textContent = on ? "バックモードを終了" : "バックモード";
+        document.body.classList.toggle("mode-debug", on);
+        btn.textContent = on ? "デバッグを終了" : "デバッグ";
         if (on) { document.getElementById("materials").open = true; }
         try { localStorage.setItem(KEY, on ? "1" : "0"); } catch (e) {}
       }
@@ -90,7 +87,7 @@
       try { saved = localStorage.getItem(KEY) === "1"; } catch (e) {}
       apply(saved);
       btn.addEventListener("click", function () {
-        apply(!document.body.classList.contains("mode-back"));
+        apply(!document.body.classList.contains("mode-debug"));
       });
     })();
   </script>
