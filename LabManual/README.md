@@ -10,8 +10,8 @@ Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チ�
 | [Lab00](./Lab00_SignIn.md) | Azure へのサインイン | サインイン、多要素認証の登録 | 15分 | Day3 |
 | [Lab01](./Lab01_ResourceGroupAndNetwork.md) | ネットワークの作成 | 割り当て済みリソース グループの確認、VNet、NSG の作成と受信規則の追加 | 60分 | Day3 |
 | [Lab02](./Lab02_CreateVirtualMachine.md) | 仮想マシンの作成と接続 | VM の作成、PowerShell での SSH 接続 | 60分 | Day3 |
-| [Lab03](./Lab03_BuildWebServer.md) | Web サーバーの構築 | nginx の導入、サンプルチャットサイトの配置 | 40分 | Day4 |
-| [Lab04](./Lab04_DeployAIFoundry.md) | AI Foundry の作成と接続 | AI Foundry リソースの作成、モデルのデプロイ、config.js への接続情報の書き込み | 60分 | Day4 |
+| [Lab03](./Lab03_BuildWebServer.md) | Web サーバーの構築 | nginx の導入、サンプルチャットサイトの配置 | 20分 | Day4 |
+| [Lab04](./Lab04_DeployAIFoundry.md) | AI Foundry の作成と接続 | AI Foundry リソースの作成、モデルのデプロイ、config.js への接続情報の書き込み | 40分 | Day4 |
 
 Lab00 から Lab04 までは、記載された手順のとおりに進めます。
 
