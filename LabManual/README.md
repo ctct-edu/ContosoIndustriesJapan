@@ -7,13 +7,19 @@ Azure 上に 1 人 1 環境（VNet + VM）を構築し、nginx で生成 AI チ�
 
 | Lab | タイトル | 内容 | 推定時間 | 実施日 |
 |---|---|---|---|---|
-| [Lab00](./Lab00_SignIn.md) | Azure へのサインイン | サインイン、多要素認証の登録 | 15分 | Day3 |
-| [Lab01](./Lab01_ResourceGroupAndNetwork.md) | ネットワークの作成 | 割り当て済みリソース グループの確認、VNet、NSG の作成と受信規則の追加 | 60分 | Day3 |
-| [Lab02](./Lab02_CreateVirtualMachine.md) | 仮想マシンの作成と接続 | VM の作成、PowerShell での SSH 接続 | 60分 | Day3 |
+| [Lab00](./Lab00_SignIn.md) | Azure へのサインイン | サインイン、多要素認証の登録 | 10分 | Day2 |
+| [Lab01](./Lab01_ResourceGroupAndNetwork.md) | ネットワークの作成 | 割り当て済みリソース グループの確認、VNet、NSG の作成と受信規則の追加 | 65分 | Day3 |
+| [Lab02](./Lab02_CreateVirtualMachine.md) | 仮想マシンの作成と接続 | VM の作成、PowerShell での SSH 接続 | 65分 | Day3 |
+| [Lab02b](./Lab02b_CLIPractice.md) | CLI の練習 | pwd・ls・cd・cat・sudo でサーバーの中を見て回る | 20分 | Day3 |
 | [Lab03](./Lab03_BuildWebServer.md) | Web サーバーの構築 | nginx の導入、サンプルチャットサイトの配置 | 20分 | Day4 |
 | [Lab04](./Lab04_DeployAIFoundry.md) | AI Foundry の作成と接続 | AI Foundry リソースの作成、モデルのデプロイ、config.js への接続情報の書き込み | 40分 | Day4 |
+| [Lab05](./Lab05_TuneSystemPrompt.md) | システムプロンプトの基本 | サンプルのシステムプロンプトを直し、答えの変化を確かめる | 45分 | Day4 |
+| [Lab06](./Lab06_AddMaterials.md) | 素材を入れる | Day1 で入手した素材を追加し、自分たちのチャットボットにする | 60分 | Day4 |
+| [Lab07](./Lab07_Advanced.md) | 発展課題（選択制） | 時間が余ったチームが取り組む | 余った分 | Day4 |
 
-Lab00 から Lab04 までは、記載された手順のとおりに進めます。
+Lab00 から Lab04 までは、記載された手順のとおりに進めます。Lab05 と Lab06 は、手順をもとに自分で考えながら進めます。Lab07 は選択制です。
+
+> Lab00 は Day2 の最後（10 分）に前倒しで行います。終わらなかった人は Day3 の朝に講師と解消します。
 
 ## 前提条件
 
@@ -21,9 +27,9 @@ Lab00 から Lab04 までは、記載された手順のとおりに進めます�
 - 多要素認証に使用するスマートフォン
 - ローカル PC（Windows、PowerShell 使用）
 - リソース グループは講師が事前に作成します（自分では作成しません）。名前は `rg-intern-YYMMDD-NN` 形式で、講師から伝えられます
-  - `YYMMDD` は実施日。2026 年 10 月 27 日であれば `261027`
+  - `YYMMDD` は実施日。2026 年 10 月 28 日であれば `261028`
   - `NN` は自分の番号。3 番であれば `03`
-  - 例：`rg-intern-261027-03`
+  - 例：`rg-intern-261028-03`
 - VM のユーザー名は `azureuser`、パスワードは講師の指示に従ってください
 
 > Day3 および Day4 の構築は、1 人ずつ自分の環境を作ります。番号はチームではなく個人の番号です。
