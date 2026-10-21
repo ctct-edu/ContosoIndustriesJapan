@@ -35,23 +35,26 @@ title: Azure へのサインイン
 
 スマートフォンで、次のアプリを入れてください。
 
-- iPhone: App Store で「**Microsoft Authenticator**」を検索
-- Android: Google Play で「**Microsoft Authenticator**」を検索
+- iPhone: App Store で「**Microsoft Authenticator**」を検索し、`[入手]` を選ぶ
+- Android: Google Play で「**Microsoft Authenticator**」を検索し、`[インストール]` を選ぶ
 
 > すでに入っている場合は、そのまま使えます。
 
-![Microsoft Authenticator のストア画面](./media/lab00-01.png)
+<img src="./media/lab00-01.png" alt="Microsoft Authenticator のストア画面" width="600">
 
 ### 1-2　起動する
 
-アプリを開きます。初回は次のような画面が出ます。
+アプリを開きます。初回は次の順に画面が出ます。
 
-- 「プライバシーとデータ収集について」→ `[同意する]`
-- 「アカウントを追加しましょう」→ この画面のまま待ちます
+1. 「Microsoft はお客様のプライバシーの保護に努めています」→ `[承諾する]`
+2. 「Microsoft Authenticator の品質向上にご協力ください」→ `[続行]`
+3. 「デジタル ライフを保護する」→ 右上の `[スキップ]`
+
+「初めてのアカウントを追加しますか？」という画面が出たら、この画面のまま待ちます。
 
 パソコン側の操作が終わるまで、この画面を開いたままにしておいてください。
 
-![「アカウントを追加しましょう」画面](./media/lab00-02.png)
+<img src="./media/lab00-02.png" alt="初回起動の画面と「初めてのアカウントを追加しますか？」画面" width="800">
 
 ---
 
@@ -68,8 +71,6 @@ https://portal.azure.com
 > 会社のアカウントで自動的にサインインされてしまう場合は、
 > ブラウザのシークレットウィンドウ（プライベートウィンドウ）で開いてください。
 
-![サインイン画面](./media/lab00-03.png)
-
 ### 2-2　ID を入力する
 
 「サインイン」の画面が出ます。配付された ID を入力し、`[次へ]` を選びます。
@@ -82,19 +83,19 @@ intern01@ctctedu.onmicrosoft.com
 
 > **自分の番号を確認してください。**他の人の番号でサインインしないでください。
 
-![ID の入力](./media/lab00-04.png)
+<img src="./media/lab00-03.png" alt="ID の入力" width="574">
 
 ### 2-3　パスワードを入力する
 
 配付されたパスワードを入力し、`[サインイン]` を選びます。
 
-![パスワードの入力](./media/lab00-05.png)
+<img src="./media/lab00-04.png" alt="パスワードの入力" width="577">
 
 ### 2-4　詳細情報の要求
 
 「詳細情報が必要」という画面が出ます。`[次へ]` を選びます。
 
-![「詳細情報が必要」画面](./media/lab00-06.png)
+<img src="./media/lab00-05.png" alt="「詳細情報が必要」画面" width="600">
 
 ---
 
@@ -106,9 +107,9 @@ intern01@ctctedu.onmicrosoft.com
 
 `[次へ]` を 2 回選びます。QR コードが表示されます。
 
-![「アカウントのセキュリティ保護」画面](./media/lab00-07.png)
+<img src="./media/lab00-06.png" alt="「アカウントのセキュリティ保護」画面" width="600">
 
-![QR コードの表示](./media/lab00-08.png)
+<img src="./media/lab00-07.png" alt="QR コードの表示" width="600">
 
 ### 3-2　QR コードを読み取る
 
@@ -121,11 +122,11 @@ intern01@ctctedu.onmicrosoft.com
 
 > カメラの利用を求められたら、許可してください。
 
-![アカウントの追加メニュー](./media/lab00-09.png)
+<img src="./media/lab00-08.png" alt="アカウントの追加メニュー" width="420">
 
-![アカウントの種類の選択](./media/lab00-10.png)
+<img src="./media/lab00-09.png" alt="アカウントの種類の選択" width="420">
 
-![QR コードのスキャン](./media/lab00-11.png)
+<img src="./media/lab00-10.png" alt="QR コードのスキャン" width="420">
 
 ### 3-3　番号を入力する
 
@@ -133,15 +134,15 @@ intern01@ctctedu.onmicrosoft.com
 
 スマートフォンに通知が届くので、その数字を入力し、`[はい]` を選びます。
 
-![2 桁の番号の表示](./media/lab00-12.png)
+<img src="./media/lab00-11.png" alt="2 桁の番号の表示" width="420">
 
-![番号の入力](./media/lab00-13.png)
+<img src="./media/lab00-12.png" alt="番号の入力" width="420">
 
 ### 3-4　完了
 
 パソコンの画面に「通知が承認されました」と出ます。`[次へ]` `[完了]` と選びます。
 
-![「通知が承認されました」画面](./media/lab00-14.png)
+<img src="./media/lab00-13.png" alt="「通知が承認されました」画面" width="600">
 
 ---
 
@@ -159,7 +160,7 @@ Azure ポータルの画面が表示されていれば完了です。
 
 **右上のアカウント名が、配付された ID と一致していることを確かめてください。**
 
-![Azure ポータルのホーム画面](./media/lab00-15.png)
+<img src="./media/lab00-14.png" alt="Azure ポータルのホーム画面" width="600">
 
 ---
 
